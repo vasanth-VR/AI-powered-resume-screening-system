@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#4f46e5">
+
+    <title>ResumeAI - Resume Screening System</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">R</div>
+
+            <div class="brand-copy">
+                <strong>ResumeAI</strong>
+                <span>Talent Intelligence</span>
+            </div>
+
+            <button
+                class="icon-btn sidebar-close"
+                id="sidebarClose"
+                type="button"
+                aria-label="Close menu">
+                ✕
+            </button>
+        </div>
+
+        <nav class="nav">
+
+            <div class="nav-label">Workspace</div>
+
+            <a
+                href="#dashboard"
+                class="nav-link active"
+                data-section="dashboard">
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a
+                href="#screening"
+                class="nav-link"
+                data-section="screening">
+                <span>⌕</span>
+                <span>Screen Resume</span>
+            </a>
+
+            <a
+                href="#candidates"
+                class="nav-link"
+                data-section="candidates">
+                <span>♙</span>
+                <span>Candidates</span>
+            </a>
+
+            <a
+                href="#reports"
+                class="nav-link"
+                data-section="reports">
+                <span>▤</span>
+                <span>Reports</span>
+            </a>
+
+            <div class="nav-label nav-label-spaced">System</div>
+
+            <button
+                class="nav-link nav-button"
+                id="darkModeBtn"
+                type="button">
+                <span id="themeIcon">☾</span>
+                <span id="themeText">Dark Appearance</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="workspace-card">
+
+                <div class="workspace-icon">✓</div>
+
+                <div>
+                    <strong>Screening Workspace</strong>
+                    <span id="sidebarBackendStatus">
+                        Checking backend...
+                    </span>
+                </div>
+
+                <span class="online-dot"></span>
+
+            </div>
+
+            <div class="profile-card">
+
+                <div class="avatar">V</div>
+
+                <div class="profile-copy">
+                    <strong>Vasanth</strong>
+                    <span>Recruiter</span>
+                </div>
+
+                <span class="profile-more">•••</span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="icon-btn menu-btn"
+                    id="menuBtn"
+                    type="button"
+                    aria-label="Open menu">
+                    ☰
+                </button>
+
+                <div>
+                    <div class="eyebrow">
+                        Recruitment Workspace
+                    </div>
+
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+                </div>
+
+            </div>
+
+            <div class="topbar-actions">
+
+                <div
+                    class="api-status"
+                    id="apiStatus">
+
+                    <span class="status-dot"></span>
+
+                    <span id="backendStatusText">
+                        Checking backend
+                    </span>
+
+                </div>
+
+                <button
+                    class="icon-btn"
+                    id="notificationBtn"
+                    type="button">
+                    🔔
+                </button>
+
+                <div class="top-avatar">
+                    V
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- ========================= -->
+            <!-- DASHBOARD -->
+            <!-- ========================= -->
+
+            <section
+                class="page-section"
+                id="dashboard">
+
+                <div class="hero">
+
+                    <div>
+
+                        <div class="hero-kicker">
+                            <span></span>
+                            Resume Screening Workspace
+                        </div>
+
+                        <h2>
+                            Make better hiring decisions, faster.
+                        </h2>
+
+                        <p>
+                            Screen resumes against real job requirements
+                            and identify matching and missing skills.
+                        </p>
+
+                    </div>
+
+                    <a
+                        class="primary-btn hero-action"
+                        href="#screening">
+                        <span>⌕</span>
+                        Screen a Resume
+                    </a>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <span class="stat-label">
+                                Screened This Session
+                            </span>
+
+                            <span class="stat-icon">
+                                ▣
+                            </span>
+                        </div>
+
+                        <strong id="totalResumes">
+                            0
+                        </strong>
+
+                        <span class="stat-meta">
+                            Current browser session
+                        </span>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <span class="stat-label">
+                                Shortlisted
+                            </span>
+
+                            <span class="stat-icon success">
+                                ✓
+                            </span>
+                        </div>
+
+                        <strong id="shortlisted">
+                            0
+                        </strong>
+
+                        <span class="stat-meta">
+                            75%+ match score
+                        </span>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <span class="stat-label">
+                                Needs Review
+                            </span>
+
+                            <span class="stat-icon warning">
+                                ◷
+                            </span>
+                        </div>
+
+                        <strong id="pendingReview">
+                            0
+                        </strong>
+
+                        <span class="stat-meta">
+                            Below shortlist threshold
+                        </span>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <span class="stat-label">
+                                Average Match
+                            </span>
+
+                            <span class="stat-icon violet">
+                                ◎
+                            </span>
+                        </div>
+
+                        <strong id="averageMatch">
+                            —
+                        </strong>
+
+                        <span class="stat-meta">
+                            Based on this session
+                        </span>
+
+                    </article>
+
+                </div>
+
+
+                <!-- DASHBOARD PANELS -->
+
+                <div class="dashboard-grid">
+
+                    <section class="panel quick-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <span class="section-eyebrow">
+                                    Quick Action
+                                </span>
+
+                                <h3>
+                                    Start Screening
+                                </h3>
+
+                                <p>
+                                    Choose a job, upload a PDF resume,
+                                    and get a skill-match result.
+                                </p>
+
+                            </div>
+
+                            <div class="heading-icon">
+                                ✦
+                            </div>
+
+                        </div>
+
+
+                        <div class="process-row">
+
+                            <div class="process-step">
+                                <span>01</span>
+
+                                <strong>
+                                    Choose Job
+                                </strong>
+
+                                <small>
+                                    Select a job stored in MongoDB.
+                                </small>
+                            </div>
+
+                            <div class="process-line"></div>
+
+                            <div class="process-step">
+                                <span>02</span>
+
+                                <strong>
+                                    Upload PDF
+                                </strong>
+
+                                <small>
+                                    Upload the candidate resume.
+                                </small>
+                            </div>
+
+                            <div class="process-line"></div>
+
+                            <div class="process-step">
+                                <span>03</span>
+
+                                <strong>
+                                    Review Match
+                                </strong>
+
+                                <small>
+                                    View matched and missing skills.
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="#screening"
+                            class="secondary-btn">
+                            Open Screening Workspace
+                            <span>→</span>
+                        </a>
+
+                    </section>
+
+
+                    <section class="panel system-panel">
+
+                        <div class="panel-heading compact">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    System
+                                </span>
+
+                                <h3>
+                                    Connection Status
+                                </h3>
+                            </div>
+
+                            <span
+                                class="badge neutral"
+                                id="connectionBadge">
+                                Checking
+                            </span>
+
+                        </div>
+
+
+                        <div class="system-row">
+
+                            <div class="system-symbol">
+                                ⚙
+                            </div>
+
+                            <div>
+                                <strong>
+                                    FastAPI Backend
+                                </strong>
+
+                                <span id="backendSystemText">
+                                    Waiting for health check
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="system-row">
+
+                            <div class="system-symbol">
+                                ◉
+                            </div>
+
+                            <div>
+                                <strong>
+                                    MongoDB
+                                </strong>
+
+                                <span>
+                                    Used by the existing backend
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- SCREENING -->
+            <!-- ========================= -->
+
+            <section
+                class="page-section"
+                id="screening">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            Screening Workspace
+                        </div>
+
+                        <h2>
+                            Screen a Candidate
+                        </h2>
+
+                        <p>
+                            Compare a resume with an existing job requirement.
+                        </p>
+
+                    </div>
+
+                    <span class="live-pill">
+                        <span></span>
+                        Ready
+                    </span>
+
+                </div>
+
+
+                <div class="screening-grid">
+
+
+                    <!-- FORM -->
+
+                    <section class="panel form-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    Candidate Input
+                                </span>
+
+                                <h3>
+                                    Upload Resume
+                                </h3>
+
+                                <p>
+                                    PDF resumes are supported.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <!-- JOB -->
+
+                        <div class="form-section">
+
+                            <label for="jobSelect">
+                                Select Job
+                                <span>
+                                    Required
+                                </span>
+                            </label>
+
+                            <div class="select-wrap">
+
+                                <select id="jobSelect">
+
+                                    <option value="">
+                                        Loading jobs...
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- UPLOAD -->
+
+                        <div
+                            class="upload-area"
+                            id="uploadArea"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Upload resume">
+
+                            <input
+                                type="file"
+                                id="resumeInput"
+                                accept=".pdf,application/pdf"
+                                hidden
+                            >
+
+                            <div class="upload-icon">
+                                ↑
+                            </div>
+
+                            <strong>
+                                Drop your resume here
+                            </strong>
+
+                            <span>
+                                or click to browse from your computer
+                            </span>
+
+                            <small>
+                                PDF only
+                            </small>
+
+                            <button
+                                class="secondary-btn compact-btn"
+                                id="browseBtn"
+                                type="button">
+                                📁 Browse File
+                            </button>
+
+
+                            <div
+                                class="selected-file"
+                                id="fileName"
+                                hidden>
+
+                                <span class="file-icon">
+                                    📄
+                                </span>
+
+                                <span
+                                    id="selectedFileName">
+                                    Resume.pdf
+                                </span>
+
+                                <button
+                                    type="button"
+                                    id="clearFile"
+                                    aria-label="Remove selected file">
+                                    ✕
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- JOB DESCRIPTION -->
+
+                        <div class="form-section">
+
+                            <label for="jobDescription">
+                                Job Description
+                                <span>
+                                    Read only
+                                </span>
+                            </label>
+
+                            <textarea
+                                id="jobDescription"
+                                readonly
+                                placeholder="Select a job to view its description...">
+                            </textarea>
+
+                            <small class="helper">
+                                This description comes directly from your backend.
+                            </small>
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="form-actions">
+
+                            <button
+                                class="ghost-btn"
+                                id="clearBtn"
+                                type="button">
+                                Clear
+                            </button>
+
+                            <button
+                                class="primary-btn"
+                                id="screenBtn"
+                                type="button">
+                                ⌕ Screen Resume
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- RESULT -->
+
+                    <section class="panel result-panel">
+
+                        <div class="panel-heading result-heading">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    Screening Result
+                                </span>
+
+                                <h3>
+                                    Candidate Analysis
+                                </h3>
+                            </div>
+
+                            <span
+                                class="badge neutral"
+                                id="resultStatus">
+                                Waiting
+                            </span>
+
+                        </div>
+
+
+                        <!-- EMPTY -->
+
+                        <div
+                            class="empty-state"
+                            id="emptyResult">
+
+                            <div class="empty-illustration">
+                                ⌕
+                            </div>
+
+                            <h3>
+                                No screening result yet
+                            </h3>
+
+                            <p>
+                                Select a job and upload a resume.
+                                Your screening result will appear here.
+                            </p>
+
+                        </div>
+
+
+                        <!-- RESULT CONTENT -->
+
+                        <div
+                            class="result-content"
+                            id="resultContent"
+                            hidden>
+
+
+                            <div class="candidate-summary">
+
+                                <div
+                                    class="candidate-avatar"
+                                    id="candidateAvatar">
+                                    VR
+                                </div>
+
+                                <div>
+
+                                    <span class="muted-label">
+                                        Candidate
+                                    </span>
+
+                                    <h3 id="candidateName">
+                                        Candidate
+                                    </h3>
+
+                                    <p id="candidateRole">
+                                        Resume Candidate
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SCORE -->
+
+                            <div class="score-card">
+
+                                <div
+                                    class="score-ring"
+                                    id="scoreRing">
+
+                                    <div>
+
+                                        <strong id="score">
+                                            0%
+                                        </strong>
+
+                                        <span>
+                                            Match
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="score-copy">
+
+                                    <span class="muted-label">
+                                        Screening Score
+                                    </span>
+
+                                    <h3 id="scoreTitle">
+                                        Waiting for result
+                                    </h3>
+
+                                    <p id="scoreDescription">
+                                        Upload a resume to calculate
+                                        the skill match.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SKILLS -->
+
+                            <div class="skill-columns">
+
+                                <div class="skill-block">
+
+                                    <div class="skill-title success-title">
+                                        <span>✓</span>
+
+                                        <h4>
+                                            Matched Skills
+                                        </h4>
+                                    </div>
+
+                                    <div
+                                        class="skill-list success-list"
+                                        id="matchedSkills">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="skill-block">
+
+                                    <div class="skill-title warning-title">
+                                        <span>!</span>
+
+                                        <h4>
+                                            Missing Skills
+                                        </h4>
+                                    </div>
+
+                                    <div
+                                        class="skill-list warning-list"
+                                        id="missingSkills">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DETAILS -->
+
+                            <div class="detail-grid">
+
+                                <div class="detail-item">
+
+                                    <span>
+                                        Resume
+                                    </span>
+
+                                    <strong id="resultFile">
+                                        -
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="detail-item">
+
+                                    <span>
+                                        Required Skills
+                                    </span>
+
+                                    <strong id="requiredCount">
+                                        0
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                class="secondary-btn report-btn"
+                                id="reportBtn"
+                                type="button">
+                                ↓ Download Screening Report
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- CANDIDATES -->
+            <!-- ========================= -->
+
+            <section
+                class="page-section"
+                id="candidates">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            Candidate Management
+                        </div>
+
+                        <h2>
+                            Candidates
+                        </h2>
+
+                        <p>
+                            Candidates screened during this browser session.
+                        </p>
+
+                    </div>
+
+                    <div class="search-box">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="text"
+                            id="candidateSearch"
+                            placeholder="Search candidate...">
+
+                    </div>
+
+                </div>
+
+
+                <section class="panel table-panel">
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Candidate
+                                    </th>
+
+                                    <th>
+                                        Position
+                                    </th>
+
+                                    <th>
+                                        Match
+                                    </th>
+
+                                    <th>
+                                        Matched Skills
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="candidateTable">
+
+                                <tr id="candidateEmptyRow">
+
+                                    <td colspan="6">
+
+                                        <div class="table-empty-state">
+
+                                            <strong>
+                                                No candidates yet
+                                            </strong>
+
+                                            <span>
+                                                Screen a resume to add a candidate.
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- REPORTS -->
+            <!-- ========================= -->
+
+            <section
+                class="page-section"
+                id="reports">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            Reports
+                        </div>
+
+                        <h2>
+                            Screening Reports
+                        </h2>
+
+                        <p>
+                            Export the latest screening result.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <section class="panel report-panel">
+
+                    <div class="report-icon">
+                        ▤
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Latest Screening Report
+                        </h3>
+
+                        <p>
+                            Download the current candidate screening
+                            result as a text report.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        id="reportPageBtn"
+                        type="button">
+                        Download Report
+                    </button>
+
+                </section>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="footer">
+
+                <span>
+                    ResumeAI Resume Screening System
+                </span>
+
+                <span>
+                    FastAPI + MongoDB
+                </span>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast-stack"
+    id="toastStack">
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
